@@ -7,7 +7,7 @@ class SignUpUsecase:
     async def __init__(self, repo: IAuthRepo):
         self.repo = repo
         
-    async def execute(self, model:SignUpModel, Authorize: AuthJWT = Depends()):
+    async def execute(self, model:SignUpModel):
         
         data = await self.repo.signup(user=model, Authorize=Authorize)
         
