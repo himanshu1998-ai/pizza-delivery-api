@@ -4,7 +4,7 @@ from fastapi_jwt_auth import AuthJWT
 from fastapi import Depends
 
 class PlaceOrderUsecase:
-    async def __init__(self, repo: IOrderRepo):
+    def __init__(self, repo: IOrderRepo):
         self.repo = repo
         
     async def execute(self, order:OrderModel, Authorize: AuthJWT = Depends()):

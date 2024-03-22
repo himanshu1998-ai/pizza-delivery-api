@@ -22,4 +22,4 @@ def get_db() -> Generator:
     finally:
         db.close()
         
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)

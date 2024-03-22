@@ -1,9 +1,10 @@
 from abc import ABC, abstractmethod
 from pizza_api.entity.schemas import SignUpModel, LoginModel
 
+
 class IAuthRepo(ABC):
     @abstractmethod
-    async def signup(user:SignUpModel):
+    async def signup(self, user:SignUpModel):
         """
         ## Create a user
         This requires the following
@@ -19,7 +20,7 @@ class IAuthRepo(ABC):
         """
     
     @abstractmethod
-    async def login(user:LoginModel):
+    async def login(self, user:LoginModel):
         """     
         ## Login a user
         This requires
@@ -31,7 +32,7 @@ class IAuthRepo(ABC):
         """
         
     @abstractmethod
-    async def refresh_token():
+    async def refresh_token(self):
         """
     ## Create a fresh token
     This creates a fresh token. It requires an refresh token.

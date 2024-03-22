@@ -1,11 +1,11 @@
 from fastapi import APIRouter,status,Depends
 from fastapi_jwt_auth import AuthJWT
-from pizza_api.repository.impl.auth_store import AuthStore
-from pizza_api.usecases.auth_usecase.signup_usecase import SignUpUsecase
-from pizza_api.usecases.auth_usecase.login_usecase import LoginUsecase
-from pizza_api.usecases.auth_usecase.refresh_token_usecase import RefreshTokenUsecase
-from pizza_api.db.database import get_db
-from pizza_api.entity.schemas import SignUpModel, LoginModel
+from repository.impl.auth_store import AuthStore
+from usecases.auth_usecase.signup_usecase import SignUpUsecase
+from usecases.auth_usecase.login_usecase import LoginUsecase
+from usecases.auth_usecase.refresh_token_usecase import RefreshTokenUsecase
+from db.database import get_db
+from entity.schemas import SignUpModel, LoginModel
 
 auth_router=APIRouter(
     prefix='/auth',

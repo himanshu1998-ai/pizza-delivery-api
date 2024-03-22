@@ -58,7 +58,7 @@ class IOrderRepo(ABC):
         """
     
     @abstractmethod
-    async def update_oder_status(self, order_id: int, order:OrderStatusModel):
+    async def update_order_status(self, order_id: int, order:OrderStatusModel):
         """
         ## Update an order's status
         This is for updating an order's status and requires ` order_status ` in str format
@@ -66,7 +66,7 @@ class IOrderRepo(ABC):
     
     
     @abstractmethod
-    async def delete_an_order(order_id: int):
+    async def delete_an_order(self, order_id: int):
          """
         ## Delete an Order
         This deletes an order by its ID

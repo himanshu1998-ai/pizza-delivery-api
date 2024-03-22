@@ -10,7 +10,7 @@ from fastapi.encoders import jsonable_encoder
 
 
 class OrderStore(IOrderRepo):
-    async def __init__(self, db: Session = Depends(get_db)):
+    def __init__(self, db: Session = Depends(get_db)):
         self.session = db
         
     async def place_an_order(self, order:OrderModel, Authorize: AuthJWT = Depends()):

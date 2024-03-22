@@ -1,5 +1,4 @@
 from fastapi import APIRouter,Depends,status
-from fastapi.exceptions import HTTPException
 from fastapi_jwt_auth import AuthJWT
 from pizza_api.db.database import get_db
 from pizza_api.repository.impl.order_store import OrderStore

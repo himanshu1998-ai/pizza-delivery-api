@@ -11,7 +11,7 @@ from werkzeug.security import generate_password_hash , check_password_hash
 
 
 class AuthStore(IAuthRepo):
-    async def __init__(self, db: Session = Depends(get_db)):
+    def __init__(self, db: Session = Depends(get_db)):
         self.session = db
         
     async def signup(self, user: SignUpModel) -> User|HTTPException:
@@ -44,7 +44,7 @@ class AuthStore(IAuthRepo):
         return new_user
     
     async def login(self, user: LoginModel, Authorize:AuthJWT=Depends()):
-        db_user=self.ession.query(User).filter(User.username==user.username).first()
+        db_user=self.session.query(User).filter(User.username==user.username).first()
 
         if db_user and check_password_hash(db_user.password, user.password):
             access_token=Authorize.create_access_token(subject=db_user.username)

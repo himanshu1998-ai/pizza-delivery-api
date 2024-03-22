@@ -1,4 +1,4 @@
-from database import Base
+from db.database import Base, engine
 from sqlalchemy import Column,Integer,Boolean,Text,String,ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils.types import ChoiceType
@@ -46,3 +46,6 @@ class Order(Base):
 
     def __repr__(self):
         return f"<Order {self.id}>"
+
+# this below line create tables inside postgres database
+# Base.metadata.create_all(bind=engine)
