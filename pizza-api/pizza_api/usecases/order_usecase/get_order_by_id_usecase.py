@@ -2,6 +2,7 @@ from pizza_api.repository.interface.order_repo import IOrderRepo
 from fastapi_jwt_auth import AuthJWT
 from fastapi import Depends
 
+
 class GetOrderByIdOrderUsecase:
     def __init__(self, repo: IOrderRepo):
         self.repo = repo
