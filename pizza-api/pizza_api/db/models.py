@@ -1,4 +1,4 @@
-from db.database import Base, engine
+from pizza_api.db.database import Base, engine
 from sqlalchemy import Column,Integer,Boolean,Text,String,ForeignKey
 from sqlalchemy.orm import relationship
 from sqlalchemy_utils.types import ChoiceType
