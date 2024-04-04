@@ -2,9 +2,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from typing import Generator
-from .config import dbtype, user, password, host, port, dbname
+from os import environ as env
+# from .config import dbtype, user, password, host, port, dbname
 # SQLALCHEMY_DATABASE_URL = "sqlite:///./sql_app.db"
-SQLALCHEMY_DATABASE_URL = f"{dbtype}://{user}:{password}@{host}:{port}/{dbname}"
+SQLALCHEMY_DATABASE_URL = f"{env['dbtype']}://{env['user']}:{env['password']}@{env['host']}:{env['port']}/{env['dbname']}"
 # engine = create_engine(
 #     SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
 # )
@@ -21,5 +22,7 @@ def get_db() -> Generator:
         yield db
     finally:
         db.close()
-        
-# Base.metadata.create_all(bind=engine)
+
+
+Base.metadata.create_all(bind=engine)
+

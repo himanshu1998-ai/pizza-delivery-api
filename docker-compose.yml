@@ -1,0 +1,28 @@
+version: "3"
+volumes:
+  traefik-ssl-certs:
+    driver: local
+services:
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+
+    environment:
+
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./pizza-api/pizza_api/.env
+    depends_on:
+      -  postgres
