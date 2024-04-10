@@ -1,4 +1,3 @@
-from ...entity.schemas import OrderModel
 from pizza_api.repository.interface.order_repo import IOrderRepo
 from pizza_api.entity.schemas import OrderModel, OrderStatusModel
 from sqlalchemy.orm import Session

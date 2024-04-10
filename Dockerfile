@@ -1,17 +1,17 @@
 FROM python:3.10
 
-WORKDIR /app
+WORKDIR /pizza-delivery-api/pizza-api
 
-COPY ./pizza-api ./app
+COPY ./pizza-api /pizza-delivery-api
 
-RUN pip install poetry
+COPY ./pizza-api/pyproject.toml /pizza-delivery-api/pyproject.toml
 
-COPY ./pizza-api/poetry.lock ./poetry.lock
+RUN pip3 install poetry
 
-COPY ./pizza-api/pyproject.toml ./pyproject.toml
+ENV PATH="/root/.local/bin:$PATH"
 
 RUN poetry config virtualenvs.create false
 
 RUN poetry install
 
-ENTRYPOINT ["uvicorn", "pizza-delivery-api.pizza-api.pizza_api.entrypoint.app:app", "--host", "0.0.0.0", "--port", "8000"]
+ENTRYPOINT ["poetry", "run", "uvicorn", "pizza-api.pizza_api.entrypoint.app:app", "--reload" ,"--host", "0.0.0.0", "--port", "8000"]

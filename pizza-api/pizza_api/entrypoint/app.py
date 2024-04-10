@@ -1,17 +1,22 @@
 from fastapi import FastAPI
 import uvicorn
 from fastapi_jwt_auth import AuthJWT
-
-from entity.schemas import Settings
-from entrypoint.router.auth_route import auth_router
-from entrypoint.router.order_route import order_router
+from starlette.middleware.cors import CORSMiddleware
+from pizza_api.entity.schemas import Settings
+from pizza_api.entrypoint.router.auth_route import auth_router
+from pizza_api.entrypoint.router.order_route import order_router
 import inspect, re
 from fastapi.routing import APIRoute
 from fastapi.openapi.utils import get_openapi
 
 app = FastAPI()
 
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
